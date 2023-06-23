@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Biblioteca {
+    private List<Livro> estoque;
+
+    public Biblioteca() {
+        estoque = new ArrayList<>();
+    }
+
+    public void adicionarLivro(Livro livro) {
+        estoque.add(livro);
+    }
+
+    public Livro pesquisarLivro(String titulo) {
+        for (Livro livro : estoque) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                return livro;
+            }
+        }
+        return null;
+    }
+    
+    public void realizarEmprestimo(Livro livro) {
+        if (livro.isDisponivel()) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite o nome do leitor:");
+            String nome = scanner.nextLine();
+
+            System.out.println("Digite a data de nascimento do leitor:");
+            String nascimento = scanner.nextLine();
+
+            System.out.println("Digite o telefone do leitor:");
+            String telefone = scanner.nextLine();
+
+            System.out.println("Digite o CPF do leitor:");
+            String cpf = scanner.nextLine();
+
+            Leitor leitor = new Leitor(nome, nascimento, telefone, cpf);
+
+            livro.setDisponivel(false);
+            System.out.println("Empréstimo realizado com sucesso para o leitor " + leitor.getNome() + ".");
+        } else {
+            System.out.println("Livro indisponível para empréstimo.");
+        }
+    }
+
+    public void realizarDevolucao(Livro livro) {
+        if (!livro.isDisponivel()) {
+            livro.setDisponivel(true);
+            System.out.println("Devolução realizada com sucesso.");
+        } else {
+            System.out.println("O livro já está disponível na biblioteca.");
+        }
+    }
+}
