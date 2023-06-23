@@ -1,0 +1,17 @@
+class Leitor extends Pessoa {
+    private String telefone;
+    private String cpf;
+
+    public Leitor(String nome, String nascimento, String telefone, String cpf) {
+        super(nome, nascimento);
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
