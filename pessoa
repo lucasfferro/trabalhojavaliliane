@@ -1,0 +1,17 @@
+abstract class Pessoa {
+    private String nome;
+    private String nascimento;
+
+    public Pessoa(String nome, String nascimento) {
+        this.nome = nome;
+        this.nascimento = nascimento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+}
